@@ -19,9 +19,21 @@ if (isset ($_POST['descricao']) && !empty(trim ($_POST['descricao']))) {
 
    if($conn -> query($sqlcreate) === TRUE) { 
    header (header: "location: tavares.php");
-
-    }
+   }
 }
+
+   # apagar
+
+   if(isset($_GET['delete'])) {
+        $id = intval($_GET['delete']);
+        $sqlDelete = "DELETE FROM tarefas WHERE id = $id";
+
+        if($conn-> query ( $sqlDelete) === TRUE) {
+            header ("location: tavares.php");
+        }
+    }
+
+
 
 # listar tarefas
 $tarefas = [];
@@ -57,8 +69,10 @@ if($result-> num_rows > 0) {
              <?php foreach($tarefas as $tarefa): ?>
              <li>
                 <?php echo $tarefa['descricao']?>
+                <a href="tavares.php?delete=<?php echo $tarefa['id']?>">Excluir</a>
              </li>
-             <?php endforeach?>; 
+
+             <?php endforeach;?>
 
         </ul>
     <?php else:?>
