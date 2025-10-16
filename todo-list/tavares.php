@@ -18,7 +18,7 @@ if (isset ($_POST['descricao']) && !empty(trim ($_POST['descricao']))) {
  $sqlcreate = " INSERT INTO tarefas (descricao) VALUES ('$descricao')";
 
    if($conn -> query($sqlcreate) === TRUE) { 
-   header (header: "location: tavares.php");
+   header ("location: tavares.php");
    }
 }
 

@@ -8,8 +8,8 @@ class Database {
 
     public $conn;
 
-    public function concetar(){
-        $this->conn = new mysqli(this->host, $this->usuario, $this->senha, $this->banco);
+    public function conectar(){
+        $this->conn = new mysqli($this->host, $this->usuario, $this->senha, $this->banco);
         if ($this->conn->connect_error) {
             die ("Algo deu errado com a conexão" . $this->conn->connect_error);
     }
@@ -18,4 +18,5 @@ class Database {
 
 }
 ?>
+
 
