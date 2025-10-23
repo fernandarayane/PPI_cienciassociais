@@ -15,7 +15,7 @@ class TarefaController {
     }
 
     public function criar () {
-        if (isset ($_POST['descricao']) && !empty(trim ($_POST['descricao']))) {
+        if (isset ($_POST['descricao']) && !empty(trim($_POST['descricao']))) {
             $this->tarefaModel->criar( $_POST ['descricao']);
         }
         header ("Location: index.php");

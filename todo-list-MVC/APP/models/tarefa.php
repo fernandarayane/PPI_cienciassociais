@@ -39,7 +39,7 @@ class Tarefa {
     public function excluir ($id) {
         $id = intval($id);
         $sql= "DELETE from tarefas WHERE id = $id";
-        return $this ->conn->query($sql);
+        return $this->conn->query($sql);
     }
 }
 
