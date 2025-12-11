@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/../models/usuario.php';
 
-class Logincontroller {
-    
+class LoginController {
+
     public function index() {
         include __DIR__ . '/../views/login.php';
     }
@@ -13,13 +13,15 @@ class Logincontroller {
         $usuario = new Usuario();
         $resultado = $usuario->autenticar($_POST['email'], $_POST['senha']);
 
-        if($resultado->num_rows > 0) {
+        if ($resultado->num_rows > 0) {
+
             $dados = $resultado->fetch_assoc();
             $_SESSION['id'] = $dados['id'];
             $_SESSION['nome'] = $dados['nome'];
 
-            header("Location: app/views/painel.php");
+            header("Location: ../../index.php?action=painel");
             exit;
+
         } else {
             include __DIR__ . '/../views/erro.php';
         }
@@ -28,12 +30,13 @@ class Logincontroller {
     public function painel() {
         session_start();
 
-        if(!isset($_SESSION['id'])) {
-            header("Location: /login-gaspari-MVC/index.php");
+        if (!isset($_SESSION['id'])) {
+            header("Location: ../../index.php");
             exit;
         }
 
         include __DIR__ . '/../views/painel.php';
     }
 }
+
 ?>
